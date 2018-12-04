@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package tienda.modelo;
 import java.util.*;
 /**
  *
@@ -15,11 +15,16 @@ public class Tienda {
     private ArrayList<Producto> productos;
     private ArrayList<Categoria> categorias;
     private ArrayList<Marca> marcas;
+    private ArrayList<Administrador> usuarios;
     private boolean refrigeradorFuncionando = true;
     Administrador admin;
     
     private static Tienda tiendita;
     
+    /**
+     *
+     * @return
+     */
     public static Tienda obtenerInstancia(){
         return tiendita;
     }
@@ -33,10 +38,14 @@ public class Tienda {
     }
     
     public String toString(){
-        return "";
+        return "Producto:\n"+productos+"Categoria:\n"+categorias+"Marca\n"+marcas+"Usuario\n"+usuarios;
     }
     
-    
+    /**
+     *
+     * @param nombre
+     * @return
+     */
     public boolean seEncuentraProducto(String nombre){
         for(int i=0;i<productos.size();i++){ 
             if (nombre.equals(productos.obtenerNombre(i))){ // FALTA OBTENERNOMBRE
@@ -46,6 +55,11 @@ public class Tienda {
            return false; 
     }
     
+    /**
+     *
+     * @param nombre
+     * @return
+     */
     public ArrayList<Producto> obtenerProducto(String nombre)
     {
         boolean verificar = seEncuentraProducto(nombre);
@@ -55,6 +69,11 @@ public class Tienda {
         return productos;
     }
     
+    /**
+     *
+     * @param producto
+     * @return
+     */
     public boolean anadirUnProducto(Producto producto)
     {
         if(productos.contains(producto))
@@ -65,6 +84,11 @@ public class Tienda {
         return true;
     }
         
+    /**
+     *
+     * @param producto
+     * @return
+     */
     public boolean borrarProducto(Producto producto)
     {
         if(productos.contains(producto))
@@ -76,6 +100,11 @@ public class Tienda {
         
     }
     
+    /**
+     *
+     * @param producto
+     * @return
+     */
     public boolean actualizarProducto(Producto producto)
     {
         Producto productoNew = new Producto();
@@ -89,6 +118,12 @@ public class Tienda {
             return false;
     }
     
+    /**
+     *
+     * @param nombre
+     * @return
+     * @see obtenerNombre 
+     */
     public boolean seEncuentraMarca(String nombre){
         for(int i=0;i<marcas.size();i++){ 
             if (nombre.equals(marcas.obtenerNombre(i))){ // FALTA OBTENERNOMBRE
@@ -98,6 +133,11 @@ public class Tienda {
            return false; 
     }
     
+    /**
+     *
+     * @param nombre
+     * @return
+     */
     public ArrayList<Marca> obtenerMarca(String nombre)
     {
         boolean verificar = seEncuentraMarca(nombre);
@@ -107,6 +147,11 @@ public class Tienda {
         return marcas;
     }
     
+    /**
+     *
+     * @param marca
+     * @return
+     */
     public boolean anadirMarca(Marca marca)
     {
         if(marcas.contains(marca))
@@ -117,6 +162,11 @@ public class Tienda {
         return true;
     }
     
+    /**
+     *
+     * @param categoria
+     * @return
+     */
     public boolean anadiCategoria(Categoria categoria)
     {
         if(categorias.contains(categoria))
@@ -127,7 +177,12 @@ public class Tienda {
         return true;
     }
     
-     public ArrayList<Categoria> obtenerCategoria(String nombre)
+    /**
+     *
+     * @param nombre
+     * @return
+     */
+    public ArrayList<Categoria> obtenerCategoria(String nombre)
     {
         boolean verificar = seEncuentraMarca(nombre);
         if(verificar == false) 
@@ -136,7 +191,12 @@ public class Tienda {
         return categorias;
     }
      
-     public boolean seEncuentraCategoria(String nombre){
+    /**
+     *
+     * @param nombre
+     * @return
+     */
+    public boolean seEncuentraCategoria(String nombre){
         for(int i=0;i<categorias.size();i++){ 
             if (nombre.equals(categorias.obtenerNombre(i))){ // FALTA OBTENERNOMBRE
                 return true;
@@ -145,6 +205,11 @@ public class Tienda {
            return false; 
     }
      
+    /**
+     *
+     * @param username
+     * @return
+     */
     public boolean seEncuentraAdministrador(String username){
          if (username.equals(admin.obtenerNombre)) // FALTA OBTENERNOMBRE
                 return true;
@@ -152,6 +217,11 @@ public class Tienda {
            return false; 
     }
     
+    /**
+     *
+     * @param administrador
+     * @return
+     */
     public boolean agregarAdministrador(Administrador administrador)
     {
         if(administrador.obtenerNombre.equals(admin.obtenerNombre))
@@ -162,13 +232,32 @@ public class Tienda {
         return true;
     }
       
+    /**
+     *
+     * @return
+     */
+    public ArrayList<Producto> productosAgotados(){
+        
+        ArrayList<Producto> productosAgotados = new ArrayList<>();
+        productosAgotados.add(producto);
+        return(productosAgotados);
     
-    //public ArrayList<Producto> productosAgotados(){
+    }
     
-    //}
+    /**
+     *
+     * @return ArrayList
+     */
+    public ArrayList<Producto> productosDescompuestosRefri(){
+        
+        ArrayList<Producto> productosDescompuestosRefri = new ArrayList<>();
+        productosDescompuestosRefri.add(producto);
+        return(productosDescompuestosRefri);
     
-    //public ArrayList<Producto> productosDescompuestosRefri(){
-    
-    //}
+    }
+    /**
+     *
+     * @return ArrayList
+     */
    
 }
